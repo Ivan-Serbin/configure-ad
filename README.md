@@ -72,12 +72,12 @@ Log into DC-1 with remote desktop connection > windows > firwall security settin
 <img src="https://i.imgur.com/3VI5bu6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
-p>
+<p>
 Next is going to be installing active directory on DC-1. For this you will need to go to server manager dashboard > add roles and features > Click next until you get to the option to add Active Directory Domain Service > continue without any changes until you get to install AD > a yellow flag will apear in the top right corner, click on that > promote this server to domain controller > add new forest [mydomain.com] > create a password for the root user > go untiol you can install AD > restart DC-1 > login as mydomain.com\[chosen name].
 </p>
 <br />
 
-p>
+<p>
 <img src="https://i.imgur.com/BuNIduM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 
@@ -92,12 +92,25 @@ Now when logged into DC-1 as go to windows > Active Directory Users and Computer
 </p>
 
 <p>
-Go to the Azure portal and navigate to the Client-1 > networking > click on client-1432 next to network interface > DNS servers > custom > [static ipv4 addres set in the beginning of the lab] > save. Next restart Client-1 > login as mydomain.com\[chosen name] > settings > system > about > rename this PC (Advanced) > change > mydomain > [mydomain.com]. Move back to DC-1 and confirm that Client-1 shows up in the computers folder in Active Directory Users and Computers. Finally create a new organzational unit "_CLIENTS" > drag Client-1 into there.
+<img src="https://i.imgur.com/SBcNSQn.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Go to the Azure portal and navigate to the Client-1 > networking > click on client-1432 next to network interface > DNS servers > custom > [static ipv4 addres set in the beginning of the lab] > save. Next restart Client-1 > login as mydomain.com\[chosen name] > settings > system > about > rename this PC (Advanced) > change > mydomain > [mydomain.com]. Move back to DC-1 and confirm that Client-1 shows up in the computers folder in Active Directory Users and Computers. Finally create a new organzational unit "_CLIENTS" > drag Client-1 into there. Now to setup the non-admin users on Client-1 we must relogin to Client-1 as jane_admin. Go to system properites > remote desktop > user accounts > add > domain user.  
 
 </p>
 <br />
 
+<p>
+<img src="https://i.imgur.com/UkOgrxX.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 
+<p>
+<img src="https://i.imgur.com/UkOgrxX.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 
+<p>
+For the final part of this AD install we will be creating users and trying to login as the normal users in CLient-1, having created them in DC-1. The steps to create the users are as follows: Login to DC-1 as jane_admin > open powershell_ise as an admin > post this script: https://github.com/joshmadakor1/AD_PS/blob/master/Generate-Names-Create-Users.ps1 > run > once finished open the employees file in ADUC. Choose a user, and login as that person into Client-1.
 
-
+</p>
+<br />
