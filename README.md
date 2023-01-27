@@ -69,9 +69,10 @@ Log into DC-1 with remote desktop connection > windows > firwall security settin
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/3VI5bu6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
-<p>
+
+p>
 Next is going to be installing active directory on DC-1. For this you will need to go to server manager dashboard > add roles and features > Click next until you get to the option to add Active Directory Domain Service > continue without any changes until you get to install AD > a yellow flag will apear in the top right corner, click on that > promote this server to domain controller > add new forest [mydomain.com] > create a password for the root user > go untiol you can install AD > restart DC-1 > login as mydomain.com\[chosen name] or [choosen name]@mydomain.com
 </p>
 <br />
@@ -81,11 +82,19 @@ p>
 </p>
 
 <p>
-Now when logged into DC-1 as go to windows > Active Directory Users and Computers > 
+Now when logged into DC-1 as go to windows > Active Directory Users and Computers > expand mydomain.com > add new organizational unit for "_ADMINS" and "_EMPLOYEES" > create new admin  "Jane Doe" with username jane_admin > right click Jane Doe > properties > "member of" > add >  add jane_admin to "Domain Admins" security group. 
+
 </p>
 <br />
 
+<p>
+<img src="https://i.imgur.com/p8kheCX.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
 
+<p>
+Go to the Azure portal and navigate to the Client-1 > networking > click on client-1432 next to network interface > DNS servers > custom > [static ipv4 addres set in the beginning of the lab] > save
+</p>
+<br />
 
 
 
