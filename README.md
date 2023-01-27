@@ -73,7 +73,7 @@ Log into DC-1 with remote desktop connection > windows > firwall security settin
 </p>
 
 p>
-Next is going to be installing active directory on DC-1. For this you will need to go to server manager dashboard > add roles and features > Click next until you get to the option to add Active Directory Domain Service > continue without any changes until you get to install AD > a yellow flag will apear in the top right corner, click on that > promote this server to domain controller > add new forest [mydomain.com] > create a password for the root user > go untiol you can install AD > restart DC-1 > login as mydomain.com\[chosen name] or [choosen name]@mydomain.com
+Next is going to be installing active directory on DC-1. For this you will need to go to server manager dashboard > add roles and features > Click next until you get to the option to add Active Directory Domain Service > continue without any changes until you get to install AD > a yellow flag will apear in the top right corner, click on that > promote this server to domain controller > add new forest [mydomain.com] > create a password for the root user > go untiol you can install AD > restart DC-1 > login as mydomain.com\[chosen name].
 </p>
 <br />
 
@@ -92,7 +92,8 @@ Now when logged into DC-1 as go to windows > Active Directory Users and Computer
 </p>
 
 <p>
-Go to the Azure portal and navigate to the Client-1 > networking > click on client-1432 next to network interface > DNS servers > custom > [static ipv4 addres set in the beginning of the lab] > save
+Go to the Azure portal and navigate to the Client-1 > networking > click on client-1432 next to network interface > DNS servers > custom > [static ipv4 addres set in the beginning of the lab] > save. Next restart Client-1 > login as mydomain.com\[chosen name] > settings > system > about > rename this PC (Advanced) > change > mydomain > [mydomain.com]. Move back to DC-1 and confirm that Client-1 shows up in the computers folder in Active Directory Users and Computers. Finally create a new organzational unit "_CLIENTS" > drag Client-1 into there.
+
 </p>
 <br />
 
