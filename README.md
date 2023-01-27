@@ -40,10 +40,31 @@ First login to Microsoft Azure, then make your way to virtual machines > create 
 <br />
 
 <p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://i.imgur.com/lzlx2N9.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Next you want to make sure to set the ipv4 address of the DC to static. In order to do this go to virtual machines > DC-1 > networking > click on dc-1378 next to network interface > ip configurations > ipconfig1 > change assignmetn from dymanic to static > save. Now that the network is static it will make it possible for the Client-1 to connect to the domain using the DNS of the static ipv4 from DC-1.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/EzUD5H6.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+<p>
+Log into Client-1 with remote desktop connection > windows > cmd > type ping -t [static ip address]. This will perpetually be pinging the DC-1 server. However you will notice that it's coming back as request timed out, meaning that we need to enable ICMPv4 in the firewall of DC-1 to let this traffic through.
+</p>
+<br />
+
+<p>
+<img src="https://i.imgur.com/laEhaWW.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+<img src="https://i.imgur.com/yqRUaZt.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Log into DC-1 with remote desktop connection > windows > firwall security settings > Advanced settings > inbound/outbound rules to allow "IPV4 permissions" on DC-1's Firewall. This will open the firewall for connectivity after DC-1 is converted into a domain. Now just switch back to Client-1 to make sure that the requests are going through.
 </p>
 <br />
 
@@ -51,6 +72,22 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
 <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Next is going to be installing active directory on DC-1. For this you will need to go to server manager dashboard > add roles and features > Click next until you get to the option to add Active Directory Domain Service > continue without any changes until you get to install AD > a yellow flag will apear in the top right corner, click on that > promote this server to domain controller > add new forest [mydomain.com] > create a password for the root user > go untiol you can install AD > restart DC-1 > login as mydomain.com\[chosen name] or [choosen name]@mydomain.com
 </p>
 <br />
+
+p>
+<img src="https://i.imgur.com/BuNIduM.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+</p>
+
+<p>
+Now when logged into DC-1 as go to windows > Active Directory Users and Computers > 
+</p>
+<br />
+
+
+
+
+
+
+
